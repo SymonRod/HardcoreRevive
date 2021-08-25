@@ -4,6 +4,7 @@ package de.zekro.hcrevive.commands;
 import org.bukkit.entity.Player;
 import de.zekro.hcrevive.deathregister.Entry;
 import de.zekro.hcrevive.deathregister.DeathRegister;
+import java.util.ArrayList;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,18 +38,18 @@ public class ReviveAllPlayer implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         // TODO Check permission
-        if (!sender.isOp()) { 
+        if (!sender.isOp()) {
             sender.sendMessage(ChatColor.RED + "You don't have the permission to use this command.");
             return false;
         }
 
-        for(Entry entry : this.deathRegister.getAllEntry()) {
+        ArrayList<Entry> register = this.deathRegister.getAllEntry();
+
+        for (int counter = 0; counter < register.size(); counter++) { 
+            Entry entry = register.get(counter);
             this.revivePlayer(entry);
         }
-
-        this.deathRegister.flush();
         sender.sendMessage(ChatColor.GREEN + "All players have been revived!.");
-
         return true;
     }
 
@@ -73,7 +74,7 @@ public class ReviveAllPlayer implements CommandExecutor {
 
         player.setGameMode(GameMode.SURVIVAL);
         player.teleport(respawnLocation);
-        player.sendMessage("You got revived by %s!");
+        player.sendMessage(ChatColor.DARK_PURPLE + "You got revived");
         this.deathRegister.remove(entry);
     }
 }

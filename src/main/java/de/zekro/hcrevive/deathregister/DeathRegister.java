@@ -69,7 +69,7 @@ public class DeathRegister {
      * Returns the list of entries 
      * @return list of revivable death entries
      */
-    public List<Entry> getAllEntry() {
+    public ArrayList<Entry> getAllEntry() {
         return this.register;
     }
 
