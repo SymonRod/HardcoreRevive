@@ -1,6 +1,7 @@
 package de.zekro.hcrevive;
 
 import de.zekro.hcrevive.commands.FlushRegister;
+import de.zekro.hcrevive.commands.ReviveAllPlayer;
 import de.zekro.hcrevive.deathregister.DeathRegister;
 import de.zekro.hcrevive.listeners.DeathListener;
 import de.zekro.hcrevive.listeners.QuitListener;
@@ -51,5 +52,7 @@ public final class HardcoreRevive extends JavaPlugin {
     private void registerCommands() {
         Objects.requireNonNull(this.getCommand("hcrvFlushRegister"))
                 .setExecutor(new FlushRegister(this.deathRegister));
+        Objects.requireNonNull(this.getCommand("reviveAll"))
+                .setExecutor(new ReviveAllPlayer(this.deathRegister));
     }
 }
