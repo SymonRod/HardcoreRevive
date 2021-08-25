@@ -66,6 +66,14 @@ public class DeathRegister {
     }
 
     /**
+     * Returns the list of entries 
+     * @return list of revivable death entries
+     */
+    public List<Entry> getAllEntry() {
+        return this.register;
+    }
+
+    /**
      * Remove the given entry from the register by
      * given entry object.
      * @param entry entry to remove

@@ -12,3 +12,7 @@ commands:
     description: Flush the death register.
     usage: /hcrvFlushRegister
     permission: hcrevive.flushRegister
+  reviveAll:
+    description: Revive all dead players.
+    usage: /reviveAll
+    permission: hcrevive.reviveAll
